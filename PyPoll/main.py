@@ -39,11 +39,15 @@ for candidate in candidateVotes:
     candidateVotes[candidate][0] = round((candidate_total_vote / total_Votes) * 100,3)
     if candidate_total_vote > prev_candidate_vote:
         winner = candidate
-prev_candidate_vote = candidate_total_vote
+    prev_candidate_vote = candidate_total_vote
 # Set up message variable to hold the output/printout
 message = (("-" * 50) + "\n" +f"Total Voter Counts: {total_Votes:,}\n" +("-" * 50) + "\n")
 for candidate in candidateVotes:
     message += f"{candidate}: {candidateVotes[candidate][0]}% ({candidateVotes[candidate][1]:,})\n"
 message += (("-" * 50) + "\n" +f"Winner: {winner}\n" +("-" * 50) + "\n")
 # Print the message
-print(message)
+print(message) 
+
+#write changes to csv
+with open(output_file, 'w') as file:
+    file.write (message)
